@@ -2,7 +2,11 @@
   "name": "@pchenx/tt-package-demo",
   "version": "1.0.0",
   "description": "A demo package for Total TypeScript",
-  "main": "dist/index.js",
+  "type": "module",
+  "exports": "./dist/index.js",
+  "engines": {
+    "node": ">=18"
+  },
   "keywords": [
     "demo",
     "typescript"
@@ -19,18 +23,20 @@
   "files": [
     "dist"
   ],
-  "type": "module",
   "license": "MIT",
   "devDependencies": {
     "@arethetypeswrong/cli": "^0.16.4",
     "prettier": "3.3.3",
-    "typescript": "^5.6.3"
+    "typescript": "^5.6.3",
+    "vitest": "^2.1.5"
   },
   "scripts": {
+    "dev": "vitest",
     "build": "tsc",
-    "ci": "npm run build && npm run check-format && npm run check-exports",
+    "ci": "npm run build && npm run check-format && npm run check-exports && npm run test",
     "format": "prettier --write .",
     "check-format": "prettier --check .",
-    "check-exports": "attw --pack ."
+    "check-exports": "attw --pack . --ignore-rules=cjs-resolves-to-esm",
+    "test": "vitest run"
   }
 }

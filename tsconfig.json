@@ -27,7 +27,7 @@
     /* AND if you're building for a library in a monorepo: */
     // "declarationMap": true,
 
-    /* no DOM access */
+    /* no DOM access. This prevents the DOM typings from being available in your code */
     "lib": ["ES2022"]
   }
 }
